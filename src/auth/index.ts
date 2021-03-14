@@ -1,5 +1,5 @@
-const jwt = require('jsonwebtoken');
-const jwksClient = require('jwks-rsa');
+const jwt = require("jsonwebtoken");
+const jwksClient = require("jwks-rsa");
 
 const authClient = jwksClient({
     jwksUri: `https://${process.env.AUTH0_DOMAIN}/.well-known/jwks.json`
@@ -24,7 +24,7 @@ export const getuser = (token?: string) => {
         return new Promise((resolve, reject) => {
             jwt.verify(bearerToken, getKey, options, (err: any, decoded: any) => {
                 if (err) {
-                    reject(err)
+                    console.log(err)
                 }
                 resolve(decoded);
             });
